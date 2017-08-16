@@ -26,7 +26,7 @@ public class HashingFunction {
 
 	}
 
-	// intialize hashmap and puts order list
+	// Initialize hashmap and puts order list
 	void initialization() {
 		myHashMap = new HashMap<Integer, MyOrderedList<Integer>>();
 		for (int i = 0; i < 11; i++) {

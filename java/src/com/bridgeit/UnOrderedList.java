@@ -20,7 +20,7 @@ public class UnOrderedList {
         
 		try {
 			
-			/* craeting a file to read the content */
+			/* Creating a file to read the content */
 			FileReader fileReader = new FileReader("/home/bridgeit/firoz/T.txt");
 			bufferedReader = new BufferedReader(fileReader);
 			String line;
@@ -29,7 +29,7 @@ public class UnOrderedList {
 				line = line.replaceAll("\\.", "");
 				strings = line.split(" ");
 				
-                /* useing enhanced for loop and add the string to the list */
+                /* Using enhanced for loop and add the string to the list */
 				for (String s : strings) {
 					myLinkedList.add(s);
 				}

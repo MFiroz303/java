@@ -1,29 +1,31 @@
 package com.bridgeit.utility;
 
 /*
-* Date: 11/06/2016
+* Date: 16/08/2017
 * Purpose: Putting Commonly used function in single file.
 	1 function to take word,integer and double as input
 	2: function to read and write file.
 **/
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.bridgeit.UserDetails;
 
 public class Utility {
 	Scanner scanner = new Scanner(System.in);
 	BufferedReader br;
-
-	/**
-	 * constructor to initialize bufferedReader
-	 */
-
-	public Utility() {
-		br = new BufferedReader(new InputStreamReader(System.in));
-	}
 
 	/**
 	 * take input word
@@ -244,7 +246,7 @@ public class Utility {
 		int b = scanner.nextInt();
 		int c = scanner.nextInt();
 
-		System.out.println("Given Quadratic equation:"+a+"x^2 + "+b+"x + "+c);
+		System.out.println("Given Quadratic equation:" + a + "x^2 + " + b + "x + " + c);
 		delta = Math.pow(b, 2) - 4 * a * c;
 		System.out.println(delta);
 		root1 = (-1 * b + Math.sqrt(delta)) / (2 * a);
@@ -282,42 +284,42 @@ public class Utility {
 		windChill = 35.74 + 0.6215 * t + (0.4275 * t - 53.75) * (Math.pow(v, 0.16));
 		System.out.println("WindChill : " + windChill);
 	}
-	
+
 	// create a method to check anagram
-		public void isAnagram(String s1, String s2) {
-			
-			// replace the blank spaces
-			String a = s1.replaceAll("\\s", "");
-			String b = s2.replaceAll("\\s", "");
+	public void isAnagram(String s1, String s2) {
 
-			boolean status;
-			// compare length of strings
-			if (a.length() != b.length()) {
-				status = false;
-			}
+		// replace the blank spaces
+		String a = s1.replaceAll("\\s", "");
+		String b = s2.replaceAll("\\s", "");
 
-			else {
-				status = true;
-			}
-			// using method convert the array in lower case and store as character
-			char[] s1Array = a.toLowerCase().toCharArray();
-			char[] s2Array = b.toLowerCase().toCharArray();
-
-			// sort the array
-			Arrays.sort(s1Array);
-			Arrays.sort(s2Array);
-
-			// using equal() method to compare the two array
-			status = Arrays.equals(s1Array, s2Array);
-
-			if (status) {
-				System.out.println(s1 + " and " + s2 + " are anagram");
-			}
-
-			else {
-				System.out.println(s1 + " and " + s2 + " are not angram");
-			}
+		boolean status;
+		// compare length of strings
+		if (a.length() != b.length()) {
+			status = false;
 		}
+
+		else {
+			status = true;
+		}
+		// using method convert the array in lower case and store as character
+		char[] s1Array = a.toLowerCase().toCharArray();
+		char[] s2Array = b.toLowerCase().toCharArray();
+
+		// sort the array
+		Arrays.sort(s1Array);
+		Arrays.sort(s2Array);
+
+		// using equal() method to compare the two array
+		status = Arrays.equals(s1Array, s2Array);
+
+		if (status) {
+			System.out.println(s1 + " and " + s2 + " are anagram");
+		}
+
+		else {
+			System.out.println(s1 + " and " + s2 + " are not angram");
+		}
+	}
 
 	/*
 	 * create a method to check and print Anagram
@@ -391,9 +393,9 @@ public class Utility {
 	}
 
 	/*
-	 * create a method tro find your number
+	 * create a method to find your number
 	 */
-	
+
 	public void findNumber(int low, int high) {
 		if (low == high) {
 			System.out.println("Your number is : " + low);
@@ -413,7 +415,6 @@ public class Utility {
 		}
 	}
 
-	
 	/*
 	 * Binary Search for String
 	 */
@@ -433,7 +434,6 @@ public class Utility {
 		}
 		return -1;
 	}
-	
 
 	/**
 	 * create a method to sort a string array
@@ -474,7 +474,7 @@ public class Utility {
 	/*
 	 * create a method bubblesort to sort the array element
 	 */
-  public static void bubbleSort(int[] array) {
+	public static void bubbleSort(int[] array) {
 		int length = array.length;
 		int temp = 0;
 
@@ -503,9 +503,9 @@ public class Utility {
 	public int calculate(int money, int[] notes) {
 		int rem;
 		int total = 0;
-		if (money == 0) 
+		if (money == 0)
 			return -1;
-	 else{
+		else {
 			if (money >= notes[i]) {
 				int calNotes = money / notes[i];
 				rem = money % notes[i];
@@ -514,13 +514,52 @@ public class Utility {
 				System.out.println(notes[i] + " Notes ---> " + calNotes);
 			}
 		}
-			i++;
-			return calculate(money, notes);
-	
+		i++;
+		return calculate(money, notes);
+	}
+
+	/**
+	 * create a method for merge sort
+	 */
+	public String[] mergeSort(String[] array) {
+		if (array.length == 1) {
+			return array;
+		}
+		String first[] = new String[array.length / 2];
+		String last[] = new String[array.length - (array.length / 2)];
+		for (int i = 0; i < first.length; i++) {
+			first[i] = array[i];
+		}
+		int j = 0;
+		for (int i = first.length; i < array.length; i++) {
+			last[j] = array[i];
+			j++;
+		}
+		first = mergeSort(first);
+		last = mergeSort(last);
+
+		String[] returnArray = new String[array.length];
+		int firstPos = 0, lastPos = 0;
+		for (int i = 0; i < returnArray.length; i++) {
+			if (lastPos == last.length) {
+				returnArray[i] = first[firstPos];
+				firstPos++;
+			} else if (firstPos == first.length) {
+				returnArray[i] = last[lastPos];
+				lastPos++;
+			} else if (first[firstPos].compareTo(last[lastPos]) > 0) {
+				returnArray[i] = last[lastPos];
+				lastPos++;
+			} else {
+				returnArray[i] = first[firstPos];
+				firstPos++;
+			}
+		}
+		return returnArray;
 	}
 
 	/*
-	 * create static function to print DayOfwee
+	 * create static function to print DayOfweek
 	 */
 
 	public static int dayOfWeek(int m, int y, int d) {
@@ -532,7 +571,7 @@ public class Utility {
 	}
 
 	/*
-	 * create a method to converte temperature and print
+	 * create a method to convert temperature and print
 	 */
 
 	public static double temperaturConversion(int temperature, String unit) {
@@ -541,6 +580,27 @@ public class Utility {
 		} else {
 			return ((double) temperature - 32) * 5 / 9;
 		}
+	}
+
+	// Converts binary number to decimal.
+	public int binaryToInteger(int binary) {
+		String binaryString = String.valueOf(binary);
+		int number = 0;
+		for (int index = 0; index < binaryString.length(); index++) {
+			int tempDigit = binaryString.charAt(index) - '0';
+			number = number * 2 + tempDigit;
+		}
+		return number;
+	}
+
+	// number string representing binary of number
+
+	public String toBinary(int number) {
+		if (number == 1) {
+			return String.valueOf(number);
+		}
+		int remainder = number % 2;
+		return toBinary(number / 2) + String.valueOf(remainder);
 	}
 
 	/*
@@ -554,4 +614,48 @@ public class Utility {
 		return (P * r) / (1 - Math.pow((1 + r), (-1 * n)));
 	}
 
+	/** Represents number as addition of numbers which are power of two **/
+	public String paddedString(int number) {
+		int i = 2;
+		String returnString = "";
+		String plusCharacter = "";
+		while (number > 0) {
+			if ((number / i) == 0) {
+				if (returnString.length() != 0) {
+					plusCharacter = " + ";
+				}
+				returnString = returnString + plusCharacter + (i / 2);
+				number -= (i / 2);
+				i = 2;
+			} else if (number == 1) {
+				return returnString + " + 1";
+			} else {
+				i *= 2;
+			}
+		}
+		return returnString;
+	}
+
+	/** Swaps nibbles in the given binary **/
+	public int swapNibbles(String binaryString) {
+		int size = binaryString.length();
+		for (int i = 0; i < 8 - size; i++) {
+			binaryString = "0" + binaryString;
+		}
+		String nibble1 = binaryString.substring(0, 4);
+		String nibble2 = binaryString.substring(4);
+		return Integer.parseInt(nibble2 + nibble1);
+	}
+
+	/** Returns true if number is power of two **/
+	public boolean isPowerOfTwo(int binary) {
+		String binaryString = String.valueOf(binary);
+
+		for (int index = 1; index < binaryString.length(); index++) {
+			if (binaryString.charAt(index) != '0') {
+				return false;
+			}
+		}
+		return true;
+	}
 }

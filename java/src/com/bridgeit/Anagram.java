@@ -2,7 +2,7 @@ package com.bridgeit;
 
 /**
  * Date 07/08/2017 Purpose:To Check that The given Two Strings are Anagram or
- * not an anagarm.
+ * not an Anagram.
  **/
 import com.bridgeit.utility.Utility;
 
