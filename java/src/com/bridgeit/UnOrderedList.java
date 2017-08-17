@@ -7,13 +7,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-import com.bridgeit.LinkedList;
+import com.bridgeit.utility.LinkedList;
 
 public class UnOrderedList {
 	
 	public static void main(String[] args) {
 
-		/*creating LinkedList*/
+		//creating LinkedList
 		LinkedList<String> myLinkedList = new LinkedList<String>();
 		String[] strings;
 		BufferedReader bufferedReader = null;

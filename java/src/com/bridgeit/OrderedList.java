@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-import com.bridgeit.MyOrderedList;
+import com.bridgeit.utility.MyOrderedList;
 
 public class OrderedList {
 

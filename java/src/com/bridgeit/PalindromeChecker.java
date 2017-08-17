@@ -20,7 +20,7 @@ public class PalindromeChecker {
 			System.out.println("Given string is a palindrome...");
 		} else { // not a palindrome
 			System.out.println("Given string is not a palindrome...");
-		}
+		}scanner.close();
 	}
 
 	// checks if the string is palindrome 

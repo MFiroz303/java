@@ -6,10 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
-
+import com.bridgeit.utility.MyOrderedList;
 import com.bridgeit.utility.Utility;
-
-import com.bridgeit.MyOrderedList;
 
 public class HashingFunction {
 

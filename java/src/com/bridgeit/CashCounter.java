@@ -21,6 +21,7 @@ public class CashCounter {
 			System.out.print("Enter your choice: ");
 			choice = scanner.nextInt();
 			counter.action(choice);
+			
 		}while(choice != 4);
 		
 		if(counter.balance == 0) {
