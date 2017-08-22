@@ -7,8 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-import com.bridgeit.utility.LinkedList;
-
+import com.bridgeit.LinkedList;
 public class UnOrderedList {
 	
 	public static void main(String[] args) {

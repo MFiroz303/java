@@ -5,14 +5,13 @@ import com.bridgeit.MyStack;
 import com.bridgeit.utility.Utility;
 
 public class Parentheses {
+	static int Choice = 0;
 	public static void main(String[] args) {
-		int choice = 0;
+		Utility utility = new Utility();
 
 		do {
 			//intializing MyStake class
 			MyStack<Character> parenthesesSatck = new MyStack<Character>();
-			
-			Utility utility = new Utility();
 			System.out.print("Enter equation to check: ");
 			String equation = utility.inputString();        //taking input
 			char[] equationCharcaterArray = equation.toCharArray();
@@ -33,10 +32,9 @@ public class Parentheses {
 			}
 
 			// Logic for continue the programme
-			Utility ul1 = new Utility();
 			System.out.println("press 1 for continue");
-			choice = ul1.inputInteger();
-		} while (choice == 1);
+			Choice = utility.inputInteger();
+		} while (Choice == 1);
 	}
 
 }

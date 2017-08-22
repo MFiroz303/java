@@ -5,14 +5,17 @@ package com.bridgeit;
 Purpose: User Input and Replace String Template.
 **/
 import com.bridgeit.utility.Utility;
+
 public class Replace {
+	static int Choice = 0;
+
 	public static void main(String[] args) {
-		int choice = 0;
+		Utility utility = new Utility();
 
 		do {
-			Utility ul = new Utility();
+
 			System.out.println("Enter the Username : ");
-			String userName = ul.inputString();
+			String userName = utility.inputString();
 
 			String stringInput = "Hello <<username>> , How are you ?";
 			if (userName.length() <= 3) {
@@ -21,9 +24,8 @@ public class Replace {
 				System.out.println("Size does not exit");
 			}
 			// Logic for continue the programme
-			Utility ul1 = new Utility();
 			System.out.println("press 1 for continue");
-			choice = ul1.inputInteger();
-		} while (choice == 1);
+			Choice = utility.inputInteger();
+		} while (Choice == 1);
 	}
 }

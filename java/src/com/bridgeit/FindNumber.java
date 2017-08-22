@@ -8,13 +8,14 @@ package com.bridgeit;
 import com.bridgeit.utility.Utility;
 
 public class FindNumber {
+	static int Choice = 0;
 	public static void main(String[] args) {
-		int choice = 0;
-
+		
 		do {
-			Utility ul = new Utility();
+			//Taking input
+			Utility utility = new Utility();
 			System.out.println("Enter the Range");
-			int inputNumber = ul.inputInteger();
+			int inputNumber = utility.inputInteger();
 
 			// creating an array and pass the inputed number
 			int array[] = new int[inputNumber];
@@ -23,12 +24,11 @@ public class FindNumber {
 				System.out.print(array[i] + " ");
 			}
 			System.out.println();
-			ul.findNumber(0, inputNumber);
+			utility.findNumber(0, inputNumber);
 
 			// Logic for continue the programme
-			Utility ul1 = new Utility();
 			System.out.println("press 1 for continue");
-			choice = ul1.inputInteger();
-		} while (choice == 1);
+			Choice = utility.inputInteger();
+		} while (Choice == 1);
 	} // end of main method
 } // end of class

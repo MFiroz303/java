@@ -23,6 +23,6 @@ public class StockReport {
 			  
 			  System.out.println("Share price");
 			  int price=scanner.nextInt();
-			  
+			  System.out.println("");
 	  }
 }

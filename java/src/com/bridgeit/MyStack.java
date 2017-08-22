@@ -1,6 +1,6 @@
 package com.bridgeit;
 
-import com.bridgeit.utility.LinkedList;
+import com.bridgeit.LinkedList;
 
 public class MyStack<T> {
 	

@@ -12,7 +12,7 @@ public class TempConversion {
 		System.out.println("Enter temperature");
 
 		int temperature = utility.inputInteger(); // take input
-		System.out.println(Utility.temperaturConversion(temperature, unit));
+		System.out.println(utility.temperaturConversion(temperature, unit));
 
 	}
 

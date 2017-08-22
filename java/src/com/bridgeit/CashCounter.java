@@ -1,19 +1,22 @@
 package com.bridgeit;
 
 import java.util.Scanner;
-import com.bridgeit.MyQueue;
-
 public class CashCounter {
 
+	//using scanner to take input
 	static Scanner scanner = new Scanner(System.in);
-	int balance = 0;
+	int balance = 0;   //initaialize balance
+	//creating object of queue
 	MyQueue<Integer> people = new MyQueue<Integer>();
 	
+	//main method
 	public static void main(String[] args) {
 		int choice = 0;
+		//create object of class
 		CashCounter counter = new CashCounter();
 		
 		do {
+			//Take input as choice
 			System.out.println("1: Deposit");
 			System.out.println("2: Withdraw");
 			System.out.println("3: People next to you");
@@ -24,6 +27,7 @@ public class CashCounter {
 			
 		}while(choice != 4);
 		
+		//to check condition that expression is balanced or not
 		if(counter.balance == 0) {
 			System.out.println("Expression is balanced");
 		}
@@ -32,8 +36,13 @@ public class CashCounter {
 		}
 	}
 
+	//create action method 
 	void action(int choice) {
 		int money;
+		/*Using Switch case
+		 * taking input using scanner
+		 * print size of queue.
+		 *  */
 		switch(choice) {
 		case 1:
 			System.out.print("Enter amount to deposit: ");

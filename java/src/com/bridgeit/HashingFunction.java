@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
-import com.bridgeit.utility.MyOrderedList;
+import com.bridgeit.MyOrderedList;
 import com.bridgeit.utility.Utility;
 
 public class HashingFunction {
@@ -16,6 +16,7 @@ public class HashingFunction {
 
 	public static void main(String[] args) {
 
+		//creating object of class
 		HashingFunction function = new HashingFunction();
 
 		function.initialization();

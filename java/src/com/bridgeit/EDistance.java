@@ -1,31 +1,30 @@
 package com.bridgeit;
 import com.bridgeit.utility.Utility;
 public class EDistance {
+	static int Choice = 0;
 	public static void main(String[] args) {
-		int choice = 0;
-
+		
+		Utility utility = new Utility();
 		do {
-			Utility ul = new Utility();
+			//Taking input
 			System.out.println("Enter x number :");
-			int valueOfx = ul.inputInteger();
+			int valueOfx = utility.inputInteger();
 
 			System.out.println("Enter y number :");
-			int valueOfy = ul.inputInteger();
+			int valueOfy = utility.inputInteger();
 
-			int powerofx = ul.powerFunction(valueOfx, 2);
+			int powerofx = utility.powerFunction(valueOfx, 2);
 			System.out.println("Power of number x is :" + powerofx);
 
-			int powerofy = ul.powerFunction(valueOfy, 2);
+			int powerofy = utility.powerFunction(valueOfy, 2);
 			System.out.println("Power of number y is :" + powerofy);
 
 			int distance = (powerofx + powerofy);
 			System.out.println("Distance between two origin is  : " + Math.sqrt(distance));
 
 			// Logic for continue the programme
-			Utility ul1 = new Utility();
 			System.out.println("press 1 for continue");
-			choice = ul1.inputInteger();
-
-		} while (choice == 1);
+			Choice = utility.inputInteger();
+		} while (Choice == 1);
 	}
 }

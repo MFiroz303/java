@@ -8,7 +8,7 @@ public class MergeSort {
 		int choice = 0;
 
 		do {
-			// Taking Inputed
+			// Taking Input
 			Scanner scanner = new Scanner(System.in);
 			System.out.print("Enter number of strings: ");
 			int numberOfStrings = scanner.nextInt();
@@ -18,6 +18,7 @@ public class MergeSort {
 				strings[i] = scanner.next();
 			}
 
+			//call mergeSort method of Utility class
 			Utility ul = new Utility();
 			strings = ul.mergeSort(strings);
 

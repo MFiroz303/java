@@ -6,20 +6,19 @@ package com.bridgeit;
  *  i. Swap nibbles and find the new number.
  *  ii. Find the resultant number is the number is a power of 2.
  **/
-import java.util.Scanner;
 import com.bridgeit.utility.Utility;
 
 public class Binary {
+	static int Choice = 0;
+
 	public static void main(String[] args) {
-		int choice = 0;
 
 		do {
 			// Take input to convert
-			Scanner scanner = new Scanner(System.in);
 			System.out.print("Enter number to convert into binary: ");
 			Utility utility = new Utility();
 			// convert using toBinary function
-			String binaryString = utility.toBinary(scanner.nextInt());
+			String binaryString = utility.toBinary(utility.inputInteger());
 			System.out.println("Binary representation of the number: " + binaryString);
 
 			// stores swapped binary nibbles
@@ -40,7 +39,7 @@ public class Binary {
 
 			// Logic for continue the programme
 			System.out.println("press 1 for continue");
-			choice = scanner.nextInt();
-		} while (choice == 1);
+			Choice = utility.inputInteger();
+		} while (Choice == 1);
 	}
 }

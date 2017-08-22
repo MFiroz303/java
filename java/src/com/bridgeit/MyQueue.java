@@ -1,10 +1,8 @@
 package com.bridgeit;
 
-import com.bridgeit.utility.LinkedList;
+import com.bridgeit.LinkedList;
 
 public class MyQueue<T> {
-
-
 	LinkedList<T> LinkedList;
 
 	/**

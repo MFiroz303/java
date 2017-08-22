@@ -6,15 +6,17 @@ package com.bridgeit;
 import com.bridgeit.utility.Utility;
 public class LeapYear {
 
+	static int Choice = 0;
 	public static void main(String[] args) {
-		int choice = 0;
+		Utility utility = new Utility();
 
 		do {
-			Utility ul = new Utility();
+			//Taking input 
 			System.out.println("Enter a Year : ");
-			int year = ul.inputInteger();
+			int year = utility.inputInteger();
 
-			boolean leap = Utility.leapYear(year);
+			//calling leapYear method of utility class
+			boolean leap = utility.leapYear(year);
 			if (leap) {
 
 				System.out.println("Year " + year + " is leap year : ");
@@ -24,7 +26,7 @@ public class LeapYear {
 			// Logic for continue the programme
 			Utility ul1 = new Utility();
 			System.out.println("press 1 for continue");
-			choice = ul1.inputInteger();
-		} while (choice == 1);
+			Choice = ul1.inputInteger();
+		} while (Choice == 1);
 	}
 }

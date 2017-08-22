@@ -9,10 +9,12 @@ Purpose:Simulates a gambler who start with $stake and place fair $1 bets until h
 
 import com.bridgeit.utility.Utility;
 public class MyGambler {
+ static int Choice = 0;
 	public static void main(String[] args) {
-		int choice = 0;
+		
 
 		do {
+			//Taking input
 			Utility ul = new Utility();
 			System.out.println("Enter the $state");
 			int $state = ul.inputInteger();
@@ -26,6 +28,10 @@ public class MyGambler {
 			int beat = 0; // total number of beets mad
 			int win = 0; // total number of games won
 
+			/*
+			 *Taking noOfTimes  input 
+			 *using Math.random() to get random value
+			 */
 			for (int i = 0; i < noOfTimes; i++) {
 				int sum = $state;
 				while (sum > 0 && sum < $Goal) {
@@ -40,14 +46,14 @@ public class MyGambler {
 					win++;
 				}
 			}
+			//print wins,%wins or %loss
 			System.out.println(win + " wins of : " + noOfTimes);
 			System.out.println("Percent of games won = " + 100.0 * win / noOfTimes);
 			System.out.println("Avg  bets : = " + 1.0 * beat / noOfTimes);
 
 			// Logic for continue the programme
-			Utility ul1 = new Utility();
 			System.out.println("press 1 for continue");
-			choice = ul1.inputInteger();
-		} while (choice == 1);
+			 Choice = ul.inputInteger();
+		} while (Choice == 1);
 	}
 }

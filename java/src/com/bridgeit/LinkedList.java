@@ -6,15 +6,14 @@ public class LinkedList<T> {
 	MyNode<T> current; // last node
 	int position; // position last node
 
-	//create constructor
+	// create constructor
 	public LinkedList() {
 		head = null;
 		current = null;
 		position = -1;
 	}
 
-	 //data added at the end of the list
-	 
+	// data added at the end of the list
 
 	public void add(T data) {
 		MyNode<T> node = new MyNode<T>(data);
@@ -55,30 +54,27 @@ public class LinkedList<T> {
 		return index(data) == -1 ? false : true;
 	}
 
-    //return true if the list is empty else returns false
-	 
+	// return true if the list is empty else returns false
+
 	public boolean isEmpty() {
 		return position == -1 ? true : false;
 	}
 
-	
-	  //returns number of elements of the list
-	 
+	// returns number of elements of the list
+
 	public int size() {
 		return position + 1;
 	}
 
-	
-	 // data to be added to the end of the list
-	 
+	// data to be added to the end of the list
+
 	public void append(T data) {
 		add(data);
 	}
 
 	/*
-	 * data element  position is to be found out
-	 * and returns position of the element in the list if it is in the list else
-	 *          returns -1
+	 * data element position is to be found out and returns position of the
+	 * element in the list if it is in the list else returns -1
 	 */
 	public int index(T data) {
 		if (position == -1) {
@@ -97,9 +93,7 @@ public class LinkedList<T> {
 		return tempPosition;
 	}
 
-	
-	 //inserts element 'data' at 'pos' position
-	
+	// inserts element 'data' at 'pos' position
 
 	public void insert(int pos, T data) {
 
@@ -125,9 +119,7 @@ public class LinkedList<T> {
 		position++;
 	}
 
-	
 	// poped the element at given location
-	 
 
 	public T pop(int location) {
 		MyNode<T> tempCurrent = head;
@@ -153,14 +145,12 @@ public class LinkedList<T> {
 	}
 
 	// pops and returns last element in the list
-	
 
 	public T pop() {
 		return pop(position);
 	}
 
-	 //prints elements in the list
-	 
+	// prints elements in the list
 
 	public void list() {
 		MyNode<T> tempCurrent = head;
@@ -178,7 +168,6 @@ class MyNode<T> {
 	MyNode(T data) {
 		this.data = data;
 		next = null;
-	} 
+	}
 
-} //end of class
-
+} // end of class

@@ -7,12 +7,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-import com.bridgeit.utility.MyOrderedList;
-
+import com.bridgeit.MyOrderedList;
 public class OrderedList {
 
 	public static void main(String[] args) {
 
+		//creating object of MyOrderedList class
 		MyOrderedList<Integer> orderedList = new MyOrderedList<Integer>();
 		String[] strings;
 		BufferedReader bufferedReader = null;

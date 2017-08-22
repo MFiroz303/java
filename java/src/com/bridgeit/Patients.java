@@ -1,4 +1,4 @@
-package com.bridgeit.utility;
+package com.bridgeit;
 
 public class Patients {
 
@@ -7,6 +7,7 @@ public class Patients {
 	String moblieNumber;
 	String age;
 	
+	//create a constructor of class patient 
 	public Patients(String id, String name, String moblieNumber, String age) {
 		this.name = name;
 		this.id = id;

@@ -9,17 +9,24 @@ package com.bridgeit;
 import com.bridgeit.utility.Utility;
 
 public class PrimeFactor {
+	static int Choice = 0;
+
 	public static void main(String[] args) {
-		Utility u = new Utility();
+		Utility utility = new Utility();
+		do {
+			System.out.println("Enter a integer number");
+			int inputNumber = utility.inputInteger(); // take the input
 
-		System.out.println("Enter a integer number");
-		int inputNumber = u.inputInteger();
-
-		for (int i = 2; i <= inputNumber; i++) {
-			if (u.isPrime(i)) {
-				System.out.print(i + " ");
+			// create a method to check prime factor
+			for (int i = 2; i <= inputNumber; i++) {
+				if (utility.isPrime(i)) {
+					System.out.print(i + " ");
+				}
 			}
-		}
-		System.out.println();
+			System.out.println();
+			// Logic for continue the programme
+			System.out.println("press 1 for continue");
+			Choice = utility.inputInteger();
+		} while (Choice == 1);
 	}
 }

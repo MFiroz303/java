@@ -8,22 +8,26 @@ package com.bridgeit.utility;
 **/
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Scanner;
-
-import com.bridgeit.Stock;
 
 public class Utility {
 	Scanner scanner = new Scanner(System.in);
 	BufferedReader br;
 
 	/**
-	 * take input word
+	 * constructor to initialize bufferedReader
 	 */
 
+	public Utility() {
+		br = new BufferedReader(new InputStreamReader(System.in));
+	}
+
+	/**
+	 * take input word
+	 */
 	public String inputString() {
 		try {
 			return br.readLine();
@@ -32,7 +36,6 @@ public class Utility {
 		}
 		return "";
 	}
-
 	/**
 	 * Take Integer Input
 	 *
@@ -70,7 +73,7 @@ public class Utility {
 	 * we create a method and check leap year or not
 	 */
 
-	public static boolean leapYear(int year) {
+	public boolean leapYear(int year) {
 
 		if (year > 1000) {
 			if ((year % 400 == 0) || (year % 4 == 0) && (year % 100 != 0)) {
@@ -97,7 +100,6 @@ public class Utility {
 	/*
 	 * create a method for HarmMonic Number
 	 */
-
 	public double harmonicNumber(int number) {
 		double sum = 0.0;
 		for (int i = 1; i <= number; i++) {
@@ -167,7 +169,7 @@ public class Utility {
 	/*
 	 * create a permute method
 	 */
-	public static void permute(String st, int a, int end) {
+	public void permute(String st, int a, int end) {
 		if (a == end) {
 			System.out.println(st);
 		} else {
@@ -182,7 +184,7 @@ public class Utility {
 	/*
 	 * create a method to swap the string
 	 */
-	public static String swap(String st, int a, int b) {
+	public String swap(String st, int a, int b) {
 		char[] ch = st.toCharArray();
 		char temp = ch[a];
 		ch[a] = ch[b];
@@ -232,8 +234,8 @@ public class Utility {
 	 * create a method to find root
 	 */
 
-	public void findRoot() {
-		double delta, root1, root2;
+	public double findRoot(double delta,double root1,double root2) {
+		//double delta, root1, root2;
 		System.out.println("Enter a, b, c of the Quadratic equation ");
 		int a = scanner.nextInt();
 		int b = scanner.nextInt();
@@ -248,6 +250,7 @@ public class Utility {
 
 		System.out.println("Frist Root of the question is : " + root1);
 		System.out.println("Second Root of the question is : " + root2);
+		return c;
 	}
 
 	/*
@@ -318,7 +321,7 @@ public class Utility {
 	 * create a method to check and print Anagram
 	 */
 
-	public static boolean anagram(String s1, String s2) {
+	public boolean anagram(String s1, String s2) {
 		// to comparing and sort strings
 		if (s1.length() != s2.length()) {
 			return false;
@@ -342,7 +345,7 @@ public class Utility {
 	 * create a method to check and print prime Number
 	 */
 
-	public static String[] prime(int r) {
+	public String[] prime(int r) {
 		String[] array = new String[1000];
 		int position = 0;
 
@@ -371,7 +374,7 @@ public class Utility {
 	/*
 	 * create a method to check and print Palindrome number
 	 */
-	public static boolean palindrome(String s) {
+	public boolean palindrome(String s) {
 		if (s.length() < 2) {
 			return false;
 		}
@@ -449,7 +452,7 @@ public class Utility {
 	 * Insertion Sort for string
 	 */
 
-	public static void insertionSort(Comparable[] array) {
+	public void insertionSort(Comparable[] array) {
 		Comparable temp;
 		for (int i = 1; i < array.length; i++) // ar[i] is element to insert
 		{
@@ -467,30 +470,27 @@ public class Utility {
 	/*
 	 * create a method bubblesort to sort the array element
 	 */
-	public static void bubbleSort(int[] array) {
-		int length = array.length;
-		int temp = 0;
+	public int[] bubbleSortAscending(int[] binaryIntArray) {
 
-		for (int i = 0; i < length; i++) {
-			for (int j = 1; j < (length - i); j++) {
-				if (array[j - 1] > array[j])
-
-					// Swap the value
-					temp = array[j - 1];
-				array[j - 1] = array[j];
-				array[j] = temp;
+		 int n = binaryIntArray.length;
+			for(int i = 0; i < n; i++) {
+				for(int j = 0; j < (n - 1 - i); j++) {
+					if(binaryIntArray[j] > binaryIntArray[j+1]) {
+						int temp = binaryIntArray[j];
+						binaryIntArray[j] = binaryIntArray[j+1];
+						binaryIntArray[j+1] = temp;
+					}
+				}
 			}
-		}
-	}
-
-	/*
-	 * create a method bubble sort to sort the array element
-	 */
-
-	static int i = 0; // indexing array
-	static int total = 0; // total notes
+			return binaryIntArray;
+	 }
+	
+	 // create a method bubble sort to sort the array element
+	
+	 int i = 0; // indexing array
+	 int total = 0; // total notes
 	int[] notes;
-	static int money;
+	 int money;
 
 	// create a method to calculate notes
 	public int calculate(int money, int[] notes) {
@@ -550,12 +550,21 @@ public class Utility {
 		}
 		return returnArray;
 	}
+	
+public double sqrt(double c, double t) {
+	double epsilon = 1e-15;
+		t = ((c / t) + t) / 2;
+		if(Math.abs(t - (c / t)) > (epsilon * t)) {
+			return t;
+		}
+		return sqrt(c , t);
+	}
 
 	/*
-	 * create static function to print DayOfweek
+	 * create  function to print DayOfweek
 	 */
 
-	public static int dayOfWeek(int m, int y, int d) {
+	public int dayOfWeek(int m, int y, int d) {
 		int y0 = (y - (14 - m) / 12);
 		int x = (int) (y0 + y0 / 4 - y0 / 100 + y0 / 400);
 		int m0 = (m + 12 * ((14 - m) / 12) - 2);
@@ -567,7 +576,7 @@ public class Utility {
 	 * create a method to convert temperature and print
 	 */
 
-	public static double temperaturConversion(int temperature, String unit) {
+	public double temperaturConversion(int temperature, String unit) {
 		if (unit.equals("f")) {
 			return (double) temperature * 9 / 5 + 32;
 		} else {
@@ -600,11 +609,10 @@ public class Utility {
 	 * create a method to find Monthly Payment
 	 */
 
-	public static double monthlyPayment(int P, int Y, int R) {
+	public double monthlyPayment(int P, int Y, int R) {
 		int n = 12 * Y;
 		int r = R / (12 * 100);
-
-		return (P * r) / (1 - Math.pow((1 + r), (-1 * n)));
+		return ((P * r) / (1 - Math.pow((1 + r), (-1 * n))));
 	}
 
 	/** Represents number as addition of numbers which are power of two **/
@@ -651,4 +659,5 @@ public class Utility {
 		}
 		return true;
 	}
+	
 }

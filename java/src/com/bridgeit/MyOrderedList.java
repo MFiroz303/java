@@ -1,37 +1,39 @@
 package com.bridgeit;
 
+import com.bridgeit.LinkedList;
+
 public class MyOrderedList<T extends Comparable<T>> extends LinkedList<T> {
 
-		/*
-		 * add elements to the list at appropriate position
-		 */
+	/*
+	 * add elements to the list at appropriate position
+	 */
 
-		@Override
-		public void add(T data) {
+	@Override
+	public void add(T data) {
 
-			MyNode<T> newNode = new MyNode<T>(data);
-			if (head == null) {
-				head = newNode;
-				current = head;
-			} else if (head.data.compareTo(data) > 0) {
-				newNode.next = head;
-				head = newNode;
-			} else if (current.data.compareTo(data) < 0) {
-				current.next = newNode;
-				current = newNode;
-			} else {
-				MyNode<T> tempPrev = head;
-				MyNode<T> tempCurrent = head.next;
+		MyNode<T> newNode = new MyNode<T>(data);
+		if (head == null) {
+			head = newNode;
+			current = head;
+		} else if (head.data.compareTo(data) > 0) {
+			newNode.next = head;
+			head = newNode;
+		} else if (current.data.compareTo(data) < 0) {
+			current.next = newNode;
+			current = newNode;
+		} else {
+			MyNode<T> tempPrev = head;
+			MyNode<T> tempCurrent = head.next;
 
-				while ((tempCurrent != current) && (tempCurrent.data.compareTo(data) < 0)) {
-					tempPrev = tempCurrent;
-					tempCurrent = tempCurrent.next;
+			while ((tempCurrent != current) && (tempCurrent.data.compareTo(data) < 0)) {
+				tempPrev = tempCurrent;
+				tempCurrent = tempCurrent.next;
 
-				}
-				tempPrev.next = newNode;
-				newNode.next = tempCurrent;
 			}
-			position++;
-
+			tempPrev.next = newNode;
+			newNode.next = tempCurrent;
 		}
+		position++;
+
 	}
+}

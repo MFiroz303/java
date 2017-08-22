@@ -7,16 +7,18 @@ package com.bridgeit;
 import com.bridgeit.utility.Utility;
 
 public class HarmonicNum {
+	static int Choice = 0;
 	public static void main(String[] args) {
-		int choice = 0;
-
+	
+		
 		do {
-			Utility ul = new Utility();
+			//Taking input
+			Utility utility = new Utility();
 			System.out.println("Enter Nth harmonic number : ");
-			int enterNumber = ul.inputInteger();
+			int enterNumber = utility.inputInteger();
 
 			//To print Hramonic number of entered Number 
-			double results = ul.harmonicNumber(enterNumber);
+			double results = utility.harmonicNumber(enterNumber);
 			if (enterNumber > 0) {
 				System.out.println("The Harmonic Value for the number is : " + results);
 			} else {
@@ -24,9 +26,8 @@ public class HarmonicNum {
 			}
 
 			// Logic for continue the programme
-			Utility ul1 = new Utility();
 			System.out.println("press 1 for continue");
-			choice = ul1.inputInteger();
-		} while (choice == 1);
+			Choice = utility.inputInteger();
+		} while (Choice == 1);
 	}
 }

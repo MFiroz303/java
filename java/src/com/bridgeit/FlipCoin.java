@@ -7,13 +7,15 @@ package com.bridgeit;
 import com.bridgeit.utility.Utility;
 
 public class FlipCoin {
+	static int Choice = 0;
 	public static void main(String[] args) {
-		int choice = 0;
+		
 
 		do {
-			Utility ul = new Utility();
+			//Taking input
+			Utility utility = new Utility();
 			System.out.println("Enter a number");
-			int inputNumber = ul.inputInteger();
+			int inputNumber = utility.inputInteger();
 			int heads = 0;
 
 			//Using Math.random() method to get different random values
@@ -32,10 +34,9 @@ public class FlipCoin {
 			System.out.println("Percentage of tails :  " + ((double) 100 * (inputNumber - heads) / inputNumber));
 
 			// Logic for continue the programme
-			Utility ul1 = new Utility();
 			System.out.println("press 1 for continue");
-			choice = ul1.inputInteger();
-		} while (choice == 1);
+			Choice = utility.inputInteger();
+		} while (Choice == 1);
 
 	} // end main method
 } // end of class

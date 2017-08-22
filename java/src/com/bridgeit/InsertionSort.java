@@ -6,6 +6,7 @@ public class InsertionSort
 
 	public static void main(String[] args) {
 		
+		Utility utility=new Utility();
 		//Take input string array in  unsorting order
 		String[] array = { "JavaScript", "Java", "C#", "C++", "Python", "Sql", "Ruby", "Php" };
 
@@ -18,7 +19,7 @@ public class InsertionSort
 		System.out.println();
 
 		//sort the srtring array
-		Utility.insertionSort(array);
+		utility.insertionSort(array);
 		System.out.println();
 
 		System.out.println("Sorted array:");

@@ -5,17 +5,16 @@ package com.bridgeit;
  **/
 import com.bridgeit.utility.Utility;
 public class QuadratiEq {
+	static double delta, root1, root2;
 	public static void main(String[] args) {
 		int choice = 0;
-
 		do {
-			Utility ul = new Utility();
-			ul.findRoot();
+        Utility ul = new Utility();
+			ul.findRoot(delta, root1, root2);
 			
 			// Logic for continue the programme
-			Utility ul1 = new Utility();
 			System.out.println("press 1 for continue");
-			choice = ul1.inputInteger();
+			choice = ul.inputInteger();
 		} while (choice == 1);
 	}
 }
