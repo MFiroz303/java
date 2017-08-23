@@ -7,36 +7,37 @@ import java.sql.Statement;
 
 import com.mysql.jdbc.Driver;
 
-public class First {
+public class CreateTable {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Connection con = null;
-		Statement stmt = null;
-		ResultSet rs = null;
+		Connection connection=null; //to connect with database
+		Statement statement=null; //statement to run query
+		ResultSet resultSet=null; 
 
 		try {
 			// load the driver
 			Driver driverRef = new Driver();
 			DriverManager.registerDriver(driverRef);
-			
+
 			// Class.forName("com.mysql.jdbc.Driver");
 			// get the db connection
 			String url = "jdbc:mysql://localhost:3306/sid?user=root&password=root";
-			con = DriverManager.getConnection(url);
+			connection = DriverManager.getConnection(url);
 
 			// issue sql queries
+			// create statement
 			String query = "select * from student_inf";
 
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(query);
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(query);
 
 			// process the result
-			while (rs.next()) {
+			while (resultSet.next()) {
 
-				int regno = rs.getInt("regno");
-				String fname = rs.getString("First_name");
-				String mname = rs.getString("middle_name");
-				String lname = rs.getString("last_name");
+				int regno = resultSet.getInt("regno");
+				String fname = resultSet.getString("First_name");
+				String mname = resultSet.getString("middle_name");
+				String lname = resultSet.getString("last_name");
 
 				System.out.println("regno is" + regno);
 				System.out.println("First Name is :" + fname);
@@ -51,12 +52,12 @@ public class First {
 		finally {
 
 			try {
-				if (con != null)
-					con.close();
-				if (stmt != null)
-					stmt.close();
-				if (rs != null)
-					rs.close();
+				if (connection != null)
+					connection.close();
+				if (statement != null)
+					statement.close();
+				if (resultSet != null)
+					resultSet.close();
 			} catch (Exception e) {
 
 				e.printStackTrace();

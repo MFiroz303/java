@@ -2,69 +2,43 @@ package jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-import com.mysql.jdbc.Driver;
+import java.sql.PreparedStatement;
 
 public class InsertTable {
+	public static void main(String args[]) throws Exception {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Connection con = null;
-		Statement stmt = null;
-		ResultSet rs = null;
+		Connection connection; //to connect with database
+		PreparedStatement preparedStatement; //statement to run query
 
-		try {
-			// load the driver
-			Driver driverRef = new Driver();
-			DriverManager.registerDriver(driverRef);
-			
-			// Class.forName("com.mysql.jdbc.Driver");
-			// get the db connection
-			String url = "jdbc:mysql://localhost:3306/sid?user=root&password=root";
-			con = DriverManager.getConnection(url);
+		// Take command line input
+		int regno = Integer.parseInt(args[0]);
+		String first_name = (args[1]);
+		String middle_name = (args[2]);
+		String last_name = (args[3]);
 
-			// issue sql queries
-			String query = "insert into student_inf()"
-					+ "values()";
+		// load the driver
+		Class.forName("com.mysql.jdbc.Driver");
 
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(query);
+		// get the database connection
+		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sid?user=root&password=root");
 
-			// process the result
-			while (rs.next()) {
+		// issue sql query
+		// create statement
+		String sql = "insert into student_inf values(?,?,?,?)";
+		preparedStatement = connection.prepareStatement(sql);
 
-				int regno = rs.getInt("regno");
-				String fname = rs.getString("First_name");
-				String mname = rs.getString("middle_name");
-				String lname = rs.getString("last_name");
+		// process the result
+		preparedStatement.setInt(1, regno);
+		preparedStatement.setString(2, first_name);
+		preparedStatement.setString(3, middle_name);
+		preparedStatement.setString(4, last_name);
 
-				System.out.println("regno is" + regno);
-				System.out.println("First Name is :" + fname);
-				System.out.println("Middle Name is :" + mname);
-				System.out.println("Last Name is :" + lname);
-			}
+		int rs = preparedStatement.executeUpdate();
+		System.out.println(rs + "records affected");
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		// close all the jdbc connection
-		finally {
+		// close the connection
+		connection.close();
+		preparedStatement.close();
 
-			try {
-				if (con != null)
-					con.close();
-				if (stmt != null)
-					stmt.close();
-				if (rs != null)
-					rs.close();
-			} catch (Exception e) {
-
-				e.printStackTrace();
-
-			}
-		}
 	}
-
 }
